@@ -2,8 +2,12 @@ plugins {
     id 'java'
 }
 
-group = 'ru.netology'
-version = '1.0-SNAPSHOT'
+group 'ru.netology'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 11
+compileJava.options.encoding = "UTF-8"
+compileTestJava.options.encoding = "UTF-8"
 
 repositories {
     mavenCentral()
@@ -12,7 +16,6 @@ repositories {
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.1'
     testImplementation 'com.codeborne:selenide:6.17.1'
-    testImplementation 'com.github.javafaker:javafaker:1.0.2'
     testImplementation 'org.projectlombok:lombok:1.18.28'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.28'
     testImplementation 'org.slf4j:slf4j-simple:1.7.32'
@@ -20,4 +23,5 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    systemProperty 'selenide.headless', System.getProperty('selenide.headless')
 }
